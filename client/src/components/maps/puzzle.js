@@ -36,7 +36,7 @@ class Puzzle extends React.Component {
             if (this.state.time) {
               this.setState({
                 time: this.state.time + time
-              });              
+              });
             }
           });
       });
@@ -62,6 +62,7 @@ class Puzzle extends React.Component {
     window.interval = null;
     if (this.state.time) {
       document.getElementById('timer').style.display = 'inline-block';
+      document.getElementById('attempts').style.display = 'inline-block';
       interval = setInterval(() => {
         this.setState({
           time: this.state.time - 1
@@ -77,7 +78,7 @@ class Puzzle extends React.Component {
         });
       }, 1000);
     } else {
-      document.getElementById('attempts').style.display = 'block';
+      document.getElementById('attempts').style.display = 'inline-block';
     }
   }
 

@@ -202,7 +202,8 @@ class Map extends React.Component {
       this.setState({
         greenclickedQuest: null,
         currentQuest: this.state.currentQuestBeforeGreenClick,
-        clickedQuest: false
+        clickedQuest: false,
+        attempts: 3
       }, function() {
         this.colorPuzzles(true);
       });
@@ -214,7 +215,8 @@ class Map extends React.Component {
       });
     } else {
       this.setState({
-        clickedQuest: false
+        clickedQuest: false,
+        attempts: 3
       }, function() {
         this.colorPuzzles();
       });
@@ -277,25 +279,23 @@ class Map extends React.Component {
       }
     } else {
       document.getElementById('puzzleAnswer').value = '';
-      if (!this.state.puzzles.time[this.props.map + this.state.currentQuest]) {
-        this.setState({
-          attempts: this.state.attempts - 1
-        }, () => {
-          if (this.state.attempts === 0) {
-            this.handleReturntoMapClick(true);
-            if (this.state.lives === 0) {
-              this.handleLifeChange();
-              this.state.attempts = 3;
-            } else {
-              Request.post('/lives', {lives: this.props.lives - 1}, function(data) {
-                console.log(data);
-              });
-              this.handleLifeChange(this.state.lives - 1);
-              this.state.attempts = 3;
-            }
+      this.setState({
+        attempts: this.state.attempts - 1
+      }, () => {
+        if (this.state.attempts === 0) {
+          this.handleReturntoMapClick(true);
+          if (this.state.lives === 0) {
+            this.handleLifeChange();
+            this.state.attempts = 3;
+          } else {
+            Request.post('/lives', {lives: this.props.lives - 1}, function(data) {
+              console.log(data);
+            });
+            this.handleLifeChange(this.state.lives - 1);
+            this.state.attempts = 3;
           }
-        });
-      }
+        }
+      });
     }
   }
 
