@@ -363,7 +363,7 @@ app.post('/consumeItem', function(req, res) {
 });
 
 app.post('/equipItem', function(req, res) {
-  userItems.where({'item_id': req.body.itemID}).fetch().then((item) => {
+  userItems.where({'item_id': req.body.itemID, 'user_id': req.user.id}).fetch().then((item) => {
     if (item.attributes.equipped === 'yes') {
       res.status(201).send(JSON.stringify('already equipped'));
     } else {
