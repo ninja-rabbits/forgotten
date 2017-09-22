@@ -15,27 +15,3 @@
   margin: 10px;
   float: left;
 }
-
-.selected {
-  border: 2px solid red;
-}
-
-.notSelected {
-  border: 1px solid black;
-}
-
-.test {
-  color: green;
-}
-
-.selected {
-  border: 2px solid red;
-}
-
-.notSelected {
-  border: 1px solid black;
-}
-
-.test {
-  color: green;
-}
