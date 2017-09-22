@@ -208,10 +208,6 @@ class Maps extends React.Component {
         labelColor='#F6F7EB'
         // primary={true}
         onClick={this.handleFinishedMapClose.bind(this)}
-        backgroundColor='#E94F37'
-        labelColor='#F6F7EB'
-        // primary={true}
-        onClick={this.handleFinishedMapClose.bind(this)}
       />
     ];
     const comingSoonActions = [
