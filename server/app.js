@@ -33,7 +33,6 @@ app.use('/api/profiles', routes.profiles);
 app.get('/mapsData', function(req, res) {
   var id = req.user.id;
   Profile.forge({id: req.user.id}).fetch({columns: ['level', 'lives']}).then((results) => {
-    console.log(results.attributes);
     res.send(JSON.stringify(results.attributes));
   }).catch((err) => {
     throw err;
@@ -98,13 +97,10 @@ app.post('/mapData', function(req, res) {
 
 app.post('/updateName', function (req, res) {
   console.log(req.body, 'req.body update NAME exists');
-  // Profile.forge({first: "John", last: "Smith"}).save().then(function() {
-  //   console.log('saved')
-  // })
   Profile.forge({id: req.body.id}).save({first: req.body.firstName,
     last: req.body.lastName
-  }).then(function() { //...
-    res.send('201'); //I don't know why this works, but it does.
+  }).then(function() {
+    res.send('201');
   });
 });
 
@@ -134,18 +130,11 @@ app.post('/removeItems', function(req, res) {
 app.use(['/account', '/maps', '/backpack', '/about', '/storyline'], routes.allOtherRoutes);
 
 app.get('/userInfo', function (req, res) {
-  console.log(req.user, 'req.users exists');
-  // db.getUsername(req.user);
-  console.log('userinfo', req.user);
   res.status(200).send(JSON.stringify(req.user));
 });
 
 
 app.get('/playerItems', function (req, res) {
-  // Profile.forge({id: req.user.id}).fetch({columns: 'level'}).then((results) => {
-  //   res.send(JSON.stringify(results.attributes.level));
-  //model.where('favorite_color', '<>', 'green').fetch().then(function() { //...
-  //model.query({where: {"Date", '>=' , first_date}, orWhere: {"Date", '<=' , last_date}})
   Profile.where({id: req.user.id}).fetchAll({withRelated: ['items']})
     .then((result) => {
       console.log('result of /playerItems', result.toJSON()[0].items);
@@ -154,28 +143,6 @@ app.get('/playerItems', function (req, res) {
     .catch((err) => {
       console.log(err, 'err');
     });
-  // .then((arr) => {
-  //   var result = [];
-  //   for (var i = 0; i < arr.length; i++) {
-  //     Items.where({id: arr[i]}).fetch().then((res) => {
-  //       //fetch it then push it into another arr
-  //        result.push(res.attributes);
-  //     })
-  //   }
-  //   console.log(result)
-  // }).then((result) => {
-  //   console.log(result);
-  // })
-  //console.log('playeritems', req.user.level);
-  // Items.fetchAll()
-  //   .then((results) => {
-  //     var change = results.map((item) => item.attributes).filter((item) => item.puzzle_id <= req.user.level);
-  //     console.log(change, 'CHANGE?');
-  //     res.status(200).send(JSON.stringify(change));
-  //   })
-  //   .catch((err) => {
-  //     console.log(err, 'error');
-  //   });
 });
 
 
@@ -213,12 +180,6 @@ app.post('/initialItem', function(req, res) {
       }
     });
 });
-// Get request to '/userStoryline'
-// 1. grab puzzle ids from user_stories that correspond to the current user id
-// 2. grab puzzles from puzzles table that correspond to the puzzle ids
-// 3. then for every puzzle id, create an object containing puzzle's story and message and then grab all items from the items table that reference that puzzle id and push the items names into an array and store that array in the created object and then push that object into an array
-// 4. then send the stringified array in the response
-// and store the item
 
 app.get('/puzzleItems', function (req, res) {
   userItems.where({'user_id': req.user.id, equipped: 'yes'}).fetchAll()
@@ -310,8 +271,7 @@ app.get('/userStoryline', function (req, res) {
 
 
 app.post('/updateAvatar', function (req, res) {
-  console.log(req.body, 'req.body updateavatar exists');
-  Profile.forge({id: req.body.id}).save({avatar: req.body.avatar}).then(function() { //...
+  Profile.forge({id: req.body.id}).save({avatar: req.body.avatar}).then(function() {
     console.log('avatar saved!!');
     res.send('201');
   });
@@ -334,11 +294,8 @@ app.post('/deleteUser', function (req, res) {
 
 app.post('/updateUsername', function (req, res) {
   console.log(req.body, 'req.body update username exists');
-  // Profile.forge({first: "John", last: "Smith"}).save().then(function() {
-  //   console.log('saved')
-  // })
-  Profile.forge({id: req.body.id}).save({username: req.body.username}).then(function() { //...
-    res.send('201'); //I don't know why this works, but it does.
+  Profile.forge({id: req.body.id}).save({username: req.body.username}).then(function() {
+    res.send('201'); 
   });
 });
 

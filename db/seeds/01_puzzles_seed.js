@@ -1,13 +1,6 @@
 const models = require('../models');
 const server = require('../../server/app');
 
-// let username;
-//
-// exports.getUsername (username) => {
-//   username = JSON.parse(username);
-// }
-
-
 exports.seed = function (knex, Promise) {
 
 
@@ -59,7 +52,7 @@ item = [
   {
     puzzleID: 2,
     name: null,
-    problem: 'Solve the following equations: 11=x/8, 8n+7=71, 2x+12=4x-82, -8c(9)=-47(25), 2(x+5)-7=3(x-2), 7y+5x=10 Given x=2',
+    problem: 'Solve the following equations: 11=x/8, 15x+7=967, 2x+12=4x-82, -8c(9)=-24(75), 2(x+5)-7=3(x-2), 7y+5x=10 Given x=2',
     solution: '88, 64, 47, 25, 9, 0',
     story_pop_up: 'A brief message pops on the phone screen: "Check the backpack." It’s almost totally dark now and the walls are touching the top and ends of the bookcase. Time has run out. You swing the backpack to the ground, unzip it, and dump everything to the ground. You hear a small metallic sound to your right and you fall to your knees to frantically search under the table which is now also pressed again the bookcase. Your hands quickly find the object in the shrinking space. A key. You jump up and try it in the door. A fit. You quickly turn the knob and it opens! It’s too dark to see beyond the door, but you don’t care. You will die if you stay here. You’re sure of that now. You grab the backpack and shove a handful of papers back in before running out through the door. You keep running down an empty passageway dimly lit with overhead fluorescent lights every few feet. You’re starting to feel like you’re underground. What is going on. Where are you? There’s no time to think. You have to get out of this place. The vibrating phone makes you stop as you come to a fork in the passage.',
     message_pop_up: 'Careful, you’re going to hurt yourself, [playerName]. Then how would you ever get out of here? You’re going to need all of your strength if you’re going to stay alive. It does look like you’re running short on time though. Let me help you out.',
@@ -80,7 +73,7 @@ item = [
   {
     puzzleID: 4,
     name: null,
-    problem: 'Decode: "Hksrmc lu yozxp jfziga, qfwtv nb eld." a=z, p=k, j=g, v=e, n=m, x=c, l=o, i=r',
+    problem: 'Decode: "Hksrmc lu yozxp jfziga, qfwtv nb eld." p=k, j=g, v=e, n=m, x=c, l=o, i=r',
     solution: 'Sphinx of black quartz, judge my vow.',
     story_pop_up: 'You immediately want to start decoding the pages, but you decide to take inventory of your supplies first. You dump the backpack out again, gently this time, and start sorting its contents on the dirt floor. You\'re disappointed to see that you grabbed quite a few blank pages from the room. You stack all of the papers with writing on them in one pile and make another for the blank ones. In an interior pocket you also find a small pocket knife and a very rotten apple. You were hoping for a pen or pencil, something to write down the decoded text with, but there is nothing else in the bag. You put the blank pages back neatly and choose a paper at random to start decoding. You decide to use the knife to carve the message in the dirt in front of you as you decode it. The page you’ve chosen is not whole. The top has been torn off and what remains looks like a list of some kind with a message beneath it. Short lines of text in a vertical row. After several minutes you look back at your work. -Daniel Jones, New York -M.J. Parks, Michigan -Samantha Elder, California -Charles Perch, New York -Eaton Lang, Maine And, you, [playerName]. Seeing your name here startles you enough to drop the knife. Who are you and how are you connected to this place? You pick the knife back up and voraciously staty decoding the second part of the page.',
     message_pop_up: 'I told you you wouldn’t like what they said, but I forgot you probably wouldn’t even remember how to read them. This make make everything a little clearer',

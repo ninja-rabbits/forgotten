@@ -95,8 +95,10 @@ class Puzzle extends React.Component {
   handleClose() {
     this.setState({open: false});
     this.refs.answerInput.focus();
+    document.getElementById('question').style.display = 'block';
     this.handleTimer();
   }
+
   render() {
     const actions = [
       <RaisedButton
@@ -139,7 +141,7 @@ class Puzzle extends React.Component {
           <div className={styles.puzzle_container}>
             <br />
             <div className={styles.puzzle_inner_container}>
-              <div className={styles.question}>{this.props.questions[this.props.map + this.props.currentQuest]}</div>
+              <div id='question' className={styles.question}>{this.props.questions[this.props.map + this.props.currentQuest]}</div>
               <br />
               <div className={styles.textField_container}>
                 <TextField

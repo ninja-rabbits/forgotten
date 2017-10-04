@@ -188,8 +188,6 @@ const getOrCreateOAuthProfile = (type, oauthProfile, done) => {
       }
     })
     .catch(() => {
-      // TODO: This is not working because redirect to login uses req.flash('loginMessage')
-      // and there is no access to req here
       done(null, null, {
         'message': 'Signing up requires an email address, \
           please be sure there is an email address associated with your Facebook account \
